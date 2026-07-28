@@ -1,7 +1,12 @@
 {
  "img/hero.jpg": {
-  "md5": "eb50cc5be34fc6212082952d163044d7",
-  "werdykt": "cinematic",
-  "uwagi": "jasna nowoczesna lazienka premium: wanna wolnostojaca, dwie umywalki nablatowe, chrom baterie, europejskie wnetrze; bez watermarku, bez ludzi, ostre 1800px - 5/5 na pelny ekran"
+  "md5": "0ffe2a2500689c08d02b3e94a1ded054",
+  "werdykt": "classic",
+  "uwagi": "Wezel wodomierzowy klienta: mosiezne zawory, dwa wodomierze Sensus, rury na tle czerwonej siatki podlogowki. Ostre, kadr techniczny, czyste, pokazuje rzemioslo instalatorskie. Krzysztof zaakceptowal te zdjecia (byly w rotacji hero)."
+ },
+ "img/hero-wezel.jpg": {
+  "md5": "0ffe2a2500689c08d02b3e94a1ded054",
+  "werdykt": "classic",
+  "uwagi": "Wezel wodomierzowy klienta - obejrzany w pelnej rozdzielczosci: mosiadz, dwa wodomierze, niebieskie zawory, czysty kadr techniczny."
  }
 }

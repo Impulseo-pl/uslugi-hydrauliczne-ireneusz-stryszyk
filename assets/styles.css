@@ -892,3 +892,33 @@ footer{view-transition-name:mt-foot}
 .faq-item summary:hover{color:var(--accent-d)}
 .faq-item p{color:var(--muted);font-size:var(--text-base);line-height:1.6;padding:0 var(--space-8) var(--space-5) 0;margin:0;max-width:62ch}
 .faq-item p a{color:var(--accent-d);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* === LIGHTBOX (29.07.2026) === */
+[hidden]{display:none!important}
+.lb{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;
+  background:rgba(12,16,20,.94);backdrop-filter:blur(6px);padding:clamp(12px,4vw,48px);animation:lb-in .22s ease}
+@keyframes lb-in{from{opacity:0}to{opacity:1}}
+.lb-fig{margin:0;max-width:min(1200px,92vw);max-height:88vh;display:flex;flex-direction:column;gap:var(--space-3);align-items:center}
+.lb-fig img{max-width:100%;max-height:82vh;width:auto;height:auto;object-fit:contain;border-radius:var(--r-sm);
+  box-shadow:0 30px 80px -30px rgba(0,0,0,.9)}
+.lb-fig figcaption{color:rgba(255,255,255,.82);font-size:var(--text-sm);letter-spacing:.02em;text-align:center}
+.lb button{position:absolute;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:#fff;
+  width:46px;height:46px;border-radius:999px;font-size:1.5rem;line-height:1;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;transition:background .2s var(--ease),border-color .2s var(--ease)}
+.lb button:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5)}
+.lb-x{top:clamp(12px,3vw,28px);right:clamp(12px,3vw,28px)}
+.lb-prev{left:clamp(8px,2vw,28px)}
+.lb-next{right:clamp(8px,2vw,28px)}
+.lb-count{position:absolute;bottom:clamp(12px,3vw,26px);left:50%;transform:translateX(-50%);color:rgba(255,255,255,.6);
+  font-size:.78rem;letter-spacing:.14em;font-variant-numeric:tabular-nums}
+@media(max-width:560px){.lb button{width:40px;height:40px}.lb-fig img{max-height:74vh}}
+
+/* === Pasek marek urządzeń (29.07.2026) === */
+.marki{padding-block:clamp(2rem,4vw,3.2rem);border-bottom:var(--hairline)}
+.marki .wrap{display:flex;flex-direction:column;align-items:center;gap:var(--space-5)}
+.marki-lab{font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:var(--muted)}
+.marki-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;
+  gap:clamp(1.4rem,5vw,3.6rem);align-items:center}
+.marki-list li{font-family:var(--font-display);font-weight:700;font-size:clamp(1.05rem,1.8vw,1.45rem);
+  color:var(--ink-soft);opacity:.62;letter-spacing:-.01em;transition:opacity .24s var(--ease),color .24s var(--ease)}
+.marki-list li:hover{opacity:1;color:var(--accent-d)}

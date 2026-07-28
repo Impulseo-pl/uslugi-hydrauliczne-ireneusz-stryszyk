@@ -406,3 +406,67 @@
 
 /* === licznik otwarć demo (buy-signal) + geo === */
 (function(){try{if(String(location.protocol).indexOf('http')!==0)return;try{if(/[?&#]team=1/.test(location.search+location.hash)){localStorage.setItem('nb_team','1');}}catch(e){}try{if(localStorage.getItem('nb_team')==='1')return;}catch(e){}if((document.referrer||'').indexOf('crm-newbeginning')>-1)return;if(sessionStorage.getItem('_dv'))return;sessionStorage.setItem('_dv','1');var seg=(location.pathname.split('/').filter(Boolean)[0])||'';var base=location.origin+(seg?('/'+seg):'');var ua='';try{ua=(navigator.userAgent||'').slice(0,300);}catch(e){}var EP='https://zngfubfinbojfgaxdrbf.supabase.co/rest/v1/demo_views';var KEY='sb_publishable_MWwoyGlSCWnJ4awtOPF0ow_ZVS0Y8qK';function send(g){try{fetch(EP,{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','apikey':KEY,'Authorization':'Bearer '+KEY,'Prefer':'return=minimal'},body:JSON.stringify({demo_url:base,page:location.pathname,referrer:(document.referrer||null),user_agent:(ua||null),ip:(g&&g.ip)||null,country:(g&&g.cc)||null,city:(g&&g.city)||null})}).catch(function(){});}catch(e){}}var done=false;function once(g){if(done)return;done=true;send(g);}try{var t=setTimeout(function(){once(null);},1500);fetch('https://ipwho.is/?fields=ip,success,country_code,city',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){clearTimeout(t);once(d&&d.success!==false?{ip:d.ip,cc:d.country_code,city:d.city}:null);}).catch(function(){clearTimeout(t);once(null);});}catch(e){once(null);}}catch(e){}})();
+
+/* ---------- LIGHTBOX galerii (dodane 29.07.2026) ----------
+   Klik w zdjęcie z .gallery / .gallery-masonry otwiera pełny podgląd.
+   Strzałki + Esc + klik w tło + swipe na mobile. */
+(function () {
+  var imgs = Array.prototype.slice.call(
+    document.querySelectorAll('.gallery .tile img, .gallery-masonry .m-tile img, .cert-card img')
+  );
+  if (!imgs.length) return;
+
+  var box = document.createElement('div');
+  box.className = 'lb';
+  box.hidden = true;
+  box.innerHTML =
+    '<button class="lb-x" aria-label="Zamknij">&times;</button>' +
+    '<button class="lb-prev" aria-label="Poprzednie">&#8249;</button>' +
+    '<figure class="lb-fig"><img alt=""><figcaption></figcaption></figure>' +
+    '<button class="lb-next" aria-label="Następne">&#8250;</button>' +
+    '<span class="lb-count"></span>';
+  document.body.appendChild(box);
+
+  var big = box.querySelector('img');
+  var cap = box.querySelector('figcaption');
+  var counter = box.querySelector('.lb-count');
+  var i = 0;
+
+  function show(n) {
+    i = (n + imgs.length) % imgs.length;
+    var src = imgs[i];
+    big.src = src.currentSrc || src.src;
+    var t = src.closest('.tile, .m-tile');
+    var c = t && t.querySelector('.cap');
+    cap.textContent = c ? c.textContent : '';
+    cap.hidden = !cap.textContent;
+    counter.textContent = (i + 1) + ' / ' + imgs.length;
+  }
+  function open(n) { show(n); box.hidden = false; document.body.style.overflow = 'hidden'; }
+  function close() { box.hidden = true; document.body.style.overflow = ''; big.src = ''; }
+
+  imgs.forEach(function (im, n) {
+    im.style.cursor = 'zoom-in';
+    im.addEventListener('click', function (e) { e.preventDefault(); open(n); });
+  });
+
+  box.querySelector('.lb-x').addEventListener('click', close);
+  box.querySelector('.lb-prev').addEventListener('click', function (e) { e.stopPropagation(); show(i - 1); });
+  box.querySelector('.lb-next').addEventListener('click', function (e) { e.stopPropagation(); show(i + 1); });
+  box.addEventListener('click', function (e) { if (e.target === box || e.target.classList.contains('lb-fig')) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (box.hidden) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowRight') show(i + 1);
+    if (e.key === 'ArrowLeft') show(i - 1);
+  });
+
+  var x0 = null;
+  box.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 45) show(i + (dx < 0 ? 1 : -1));
+    x0 = null;
+  });
+})();
