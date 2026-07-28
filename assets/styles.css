@@ -831,3 +831,64 @@ footer{view-transition-name:mt-foot}
 
 /* === auto-paleta ze zdjęć klienta (dopasowanie do estetyki socials) === */
 :root{--accent:#95653C;--accent-d:#754C29;--accent-soft:rgba(149,101,60,0.10);--paper:#F9F9F8;--paper-2:#EFEEED;--paper-3:#E8E7E5;}
+
+/* === POPRAWKI KLIENTA 28.07.2026: 4 kafelki, siatka usług, sekcje Partner === */
+
+/* 4 kafelki w rzędzie (klient prosił o zwężenie, żeby zmieściły się 4) */
+.gateways.g4{grid-template-columns:repeat(4,1fr)}
+.gateways.g4 .gateway{aspect-ratio:3/4.05}
+.gateways.g4 .gateway .g-ttl{font-size:1.06rem;padding:var(--space-5) var(--space-4);line-height:1.2}
+@media(max-width:1080px){.gateways.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.gateways.g4{grid-template-columns:1fr}.gateways.g4 .gateway{aspect-ratio:16/10}}
+
+/* Lista usług: sama nazwa, wyśrodkowana, bez opisów */
+.usl-grid{list-style:none;margin:var(--space-8) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)}
+.usl-card{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  gap:var(--space-3);padding:var(--space-6) var(--space-5);background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);
+  transition:border-color .24s var(--ease),transform .24s var(--ease),box-shadow .3s var(--ease)}
+.usl-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--sh-md)}
+.usl-no{font-family:var(--font-display);font-weight:700;font-size:.78rem;letter-spacing:.14em;color:var(--accent)}
+.usl-name{font-family:var(--font-display);font-weight:700;font-size:1.1rem;line-height:1.25;color:var(--ink);max-width:22ch}
+.usl-cta{font-weight:700;font-size:var(--text-sm);color:var(--accent-d)}
+.usl-cta:hover{color:var(--ink)}
+@media(max-width:900px){.usl-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.usl-grid{grid-template-columns:1fr}}
+
+/* Pasek partnera na stronie głównej */
+.partner-band{background:var(--paper-2);border-block:var(--hairline)}
+.pb-inner{display:grid;grid-template-columns:minmax(180px,300px) 1fr;gap:clamp(24px,5vw,64px);align-items:center}
+.pb-logo{width:100%;max-width:300px;height:auto;object-fit:contain;background:#fff;padding:clamp(14px,2vw,22px) clamp(16px,2.4vw,26px);border-radius:var(--r-sm);border:1px solid var(--line);box-shadow:var(--sh-md)}
+.pb-copy h2{margin-bottom:var(--space-4)}
+.pb-copy p{color:var(--muted);max-width:56ch;margin-bottom:var(--space-6)}
+@media(max-width:760px){.pb-inner{grid-template-columns:1fr;text-align:left}.pb-logo{max-width:210px}}
+
+/* Zakładka Partner: podpunkty w formie jak w ofercie + certyfikaty */
+.partner-hero-logo{background:#fff;border-radius:var(--r-md);padding:clamp(20px,4vw,44px);display:flex;justify-content:center;
+  border:1px solid var(--line);box-shadow:var(--sh-md)}
+.partner-hero-logo img{width:100%;max-width:460px;height:auto}
+.cert-head{text-align:center;margin-bottom:var(--space-7)}
+.cert-head .eyebrow{justify-content:center}
+.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5);max-width:56rem;margin-inline:auto}
+.cert-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;box-shadow:var(--sh-md)}
+.cert-card img{width:100%;height:auto;display:block}
+.cert-card .cert-cap{padding:var(--space-4);font-size:var(--text-sm);color:var(--muted);text-align:center}
+@media(max-width:760px){.cert-grid{grid-template-columns:1fr}}
+
+/* Pasek liczb: wyśrodkowany, gdy więcej niż jedna pozycja */
+.tb-stats{justify-content:center}
+.tb-stat .tb-num.tb-word{font-size:clamp(1.5rem,2.2vw,2.1rem);letter-spacing:-.01em}
+
+/* === FAQ - akordeon (brakowało stylów, dodane 29.07.2026) === */
+.faq-klinika{background:var(--paper-2)}
+.faq-list{max-width:52rem;margin-inline:auto;border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item summary{list-style:none;cursor:pointer;padding:var(--space-5) var(--space-8) var(--space-5) 0;position:relative;
+  font-family:var(--font-display);font-weight:700;font-size:1.06rem;color:var(--ink);transition:color .2s var(--ease)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"";position:absolute;right:6px;top:50%;width:11px;height:11px;
+  border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);
+  transform:translateY(-70%) rotate(45deg);transition:transform .28s var(--ease)}
+.faq-item[open] summary::after{transform:translateY(-25%) rotate(-135deg)}
+.faq-item summary:hover{color:var(--accent-d)}
+.faq-item p{color:var(--muted);font-size:var(--text-base);line-height:1.6;padding:0 var(--space-8) var(--space-5) 0;margin:0;max-width:62ch}
+.faq-item p a{color:var(--accent-d);font-weight:600;text-decoration:underline;text-underline-offset:3px}
