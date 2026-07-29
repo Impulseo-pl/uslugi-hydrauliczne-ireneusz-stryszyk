@@ -976,3 +976,25 @@ body:has(.hero-cine) .nav:not(.is-stuck) .brand-logo{filter:brightness(0) invert
   .hero-cine .lead{font-size:.95rem}
   .hc-phone-num{font-size:1.72rem}
 }
+
+/* === Zakładka Partner: urządzenia producenta + certyfikaty (29.07.2026) === */
+.prod-art{background:#0f7d72}
+.prod-art img{object-fit:cover}
+.prod-band{background:var(--paper-2);border-block:var(--hairline)}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5);margin-top:var(--space-8)}
+.prod-card{margin:0;background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;
+  box-shadow:var(--sh-md);transition:transform .28s var(--ease),box-shadow .28s var(--ease)}
+.prod-card:hover{transform:translateY(-3px);box-shadow:0 22px 44px -26px rgba(0,0,0,.45)}
+.prod-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#0f7d72}
+.prod-card figcaption{padding:var(--space-4) var(--space-5);font-family:var(--font-display);font-weight:600;
+  font-size:.95rem;color:var(--ink);text-align:center}
+@media(max-width:900px){.prod-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.prod-grid{grid-template-columns:1fr}}
+
+.cert-band{background:var(--paper-2);border-top:var(--hairline)}
+.cert-head p{color:var(--muted);margin-top:var(--space-3)}
+.cert-card{margin:0}
+.cert-card img{cursor:zoom-in;border-bottom:1px solid var(--line)}
+.cert-cap{padding:var(--space-4) var(--space-5) var(--space-5);font-family:var(--font-display);font-weight:600;
+  font-size:.92rem;color:var(--ink);text-align:center;line-height:1.35}
+.cert-cap small{display:block;font-family:var(--font-body);font-weight:400;font-size:.78rem;color:var(--muted);margin-top:6px;letter-spacing:.04em}
