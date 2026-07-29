@@ -481,3 +481,18 @@
     x0 = null;
   });
 })();
+
+/* Galeria: doczytujemy kadry z DUŻYM wyprzedzeniem (1500 px przed wejściem w ekran),
+   żeby przy szybkim przewijaniu nie było szarych pól. */
+(function () {
+  var lazy = document.querySelectorAll('.gallery-masonry img[loading="lazy"], .gallery img[loading="lazy"]');
+  if (!lazy.length || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.loading = 'eager';
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '1500px 0px' });
+  Array.prototype.forEach.call(lazy, function (im) { io.observe(im); });
+})();
