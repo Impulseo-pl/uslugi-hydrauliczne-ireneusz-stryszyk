@@ -1004,3 +1004,10 @@ body:has(.hero-cine) .nav:not(.is-stuck) .brand-logo{filter:brightness(0) invert
 /* atrybuty width/height w HTML wystarcza - przegladarka sama trzyma proporcje */
 /* szare tlo pod kafelkiem, zeby przy doladowywaniu nie bylo bialych dziur */
 .gallery-masonry .m-tile{background:var(--paper-3)}
+
+/* Galeria 45 zdjęć: bez animacji wejścia. Przy szybkim przewijaniu (albo skoku suwakiem)
+   obserwator nie zdążał odsłonić kafli i użytkownik widział puste pola. Zdjęcia mają być
+   po prostu widoczne; o kolejność pobierania dba lazy-loading. */
+.gallery-masonry .m-tile,
+.gallery-masonry .m-tile img{opacity:1!important;clip-path:none!important;transform:none!important;
+  scale:1!important;translate:0 0!important;animation:none!important;transition:none!important}
