@@ -438,7 +438,18 @@
     big.src = src.currentSrc || src.src;
     var t = src.closest('.tile, .m-tile, .cert-card, .prod-card');
     var c = t && t.querySelector('.cap, .cert-cap, figcaption');
-    cap.textContent = c ? c.textContent.replace(/\s+/g, ' ').trim() : '';
+    var txt = '';
+    if (c) {
+      var sm = c.querySelector('small');
+      if (sm) {
+        var head = c.cloneNode(true);
+        head.removeChild(head.querySelector('small'));
+        txt = head.textContent.replace(/\s+/g, ' ').trim() + ' · ' + sm.textContent.trim();
+      } else {
+        txt = c.textContent.replace(/\s+/g, ' ').trim();
+      }
+    }
+    cap.textContent = txt;
     cap.hidden = !cap.textContent;
     counter.textContent = (i + 1) + ' / ' + imgs.length;
   }
