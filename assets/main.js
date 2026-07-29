@@ -412,7 +412,7 @@
    Strzałki + Esc + klik w tło + swipe na mobile. */
 (function () {
   var imgs = Array.prototype.slice.call(
-    document.querySelectorAll('.gallery .tile img, .gallery-masonry .m-tile img, .cert-card img')
+    document.querySelectorAll('.gallery .tile img, .gallery-masonry .m-tile img, .cert-card img, .prod-card img')
   );
   if (!imgs.length) return;
 
@@ -436,9 +436,9 @@
     i = (n + imgs.length) % imgs.length;
     var src = imgs[i];
     big.src = src.currentSrc || src.src;
-    var t = src.closest('.tile, .m-tile');
-    var c = t && t.querySelector('.cap');
-    cap.textContent = c ? c.textContent : '';
+    var t = src.closest('.tile, .m-tile, .cert-card, .prod-card');
+    var c = t && t.querySelector('.cap, .cert-cap, figcaption');
+    cap.textContent = c ? c.textContent.replace(/\s+/g, ' ').trim() : '';
     cap.hidden = !cap.textContent;
     counter.textContent = (i + 1) + ' / ' + imgs.length;
   }
