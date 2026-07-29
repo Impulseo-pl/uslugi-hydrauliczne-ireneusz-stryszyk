@@ -998,3 +998,9 @@ body:has(.hero-cine) .nav:not(.is-stuck) .brand-logo{filter:brightness(0) invert
 .cert-cap{padding:var(--space-4) var(--space-5) var(--space-5);font-family:var(--font-display);font-weight:600;
   font-size:.92rem;color:var(--ink);text-align:center;line-height:1.35}
 .cert-cap small{display:block;font-family:var(--font-body);font-weight:400;font-size:.78rem;color:var(--muted);margin-top:6px;letter-spacing:.04em}
+
+/* Masonry: zdjecia maja atrybuty width/height, wiec przegladarka trzyma miejsce
+   zanim kadr sie doladuje (wczesniej kolumny "dziurawily sie" przy przewijaniu). */
+/* atrybuty width/height w HTML wystarcza - przegladarka sama trzyma proporcje */
+/* szare tlo pod kafelkiem, zeby przy doladowywaniu nie bylo bialych dziur */
+.gallery-masonry .m-tile{background:var(--paper-3)}
